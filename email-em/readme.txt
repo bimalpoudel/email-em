@@ -2,7 +2,7 @@
 
 Contributors: pbimal
 Donate link: http://bimal.org.np/
-Tags: email, email em, them, share link
+Tags: email, email em, private, private document, share, share link, share pages, them
 Requires at least: 4.5.0
 Tested up to: 4.5.2
 Stable tag: 1.0.1
@@ -15,8 +15,8 @@ Shares a current page's URL through email.
 
 == Description ==
 
-Registered user can send an email containing current page's URL.
-It is helpful in sharing private links which are not visible in the regular blog.
+Registered user can send out an email containing current page's URL.
+It is helpful in sharing private or unpublished links which are not visible in the regular blog.
 
 
 == Installation ==
@@ -54,20 +54,30 @@ It gives you an interface to enter an email address.
 Filling this form will email them the current URL you are visiting.
 
 
+= Why don't I see the quick form? =
+
+You need to be a logged in user and be visiting a single page in details.
+
+
 = Why it does not work for posts but for pages only? =
 
-Posts are instantly visible and possible, not required to share.
-Pages are often private and need to be taken care of.
+Posts are normally instantly visible, and hence less likely to be shared manually.
+Pages are often invisible or unpublished and need to be shared.
 
 
 = Does it collect email addresses? =
 
-No. Email addresses are never captured. Only it is used to email the current page's URL once.
+No. Email addresses are not captured. It is only used to send an email that contains the current page's URL.
+
+
+= Tell me a situation it helps the best. =
+
+Suppose you are documenting any unpublished ideas within your blogs; but one day you found your soulmate to give an access to. Anyone with the link can open your pages, and you can **email-em** your page's URL.
 
 
 == Screenshots ==
 
-1. Form to fillup a recipient email.
+1. Quick form to fillup a recipient's email.
 
 
 == Changelog ==
