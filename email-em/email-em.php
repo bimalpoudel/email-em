@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Email-Em
- * Description: Allows to share the link of a page
+ * Description: Share a page's link over email
  * Plugin URI: http://bimal.org.np/
  * Author URI: http://bimal.org.np/
  * Author: Bimal Poudel
@@ -10,7 +10,9 @@
 add_filter('the_content', 'email_em', 20);
 function email_em($content='')
 {
-	#if(!is_single()) return $content;
+	/**
+	 * Only on page-details
+	 */
 	if(!is_singular('page')) return $content;
 	
 	$user = wp_get_current_user();
@@ -21,7 +23,8 @@ function email_em($content='')
 	if(!$user->exists()) return $content;
 
 	/**
-	 * Use must have a valid email
+	 * Registered user must have a valid email.
+	 * Acts as sender's email.
 	 */
 	if(!is_email($user->user_email)) return $content;
 
@@ -37,8 +40,8 @@ function email_em($content='')
 		/**
 		 * Recipient's email should be valid
 		 */
-		$_POST['sendto'] = sanitize_text_field($_POST['sendto']);
-		if(!is_email($_POST['sendto'])) return $content;
+		$sendto = sanitize_email($_POST['sendto']);
+		if(!is_email($sendto)) return $content;
 		
 		global $wp;
 
@@ -61,12 +64,12 @@ Thank you.
 		$headers = implode("\r\n", array(
 			"From: {$user->display_name} <{$user->user_email}>",
 			"Reply-To: {$user->display_name} <{$user->user_email}>",
-			"Content-Type: text/plain;charset=utf-8"
+			"Content-Type: text/plain;charset=utf-8",
 		));
 		
 		$attachments = null;
 
-		wp_mail($_POST['sendto'], $subject, $message, $headers, $attachments);
+		wp_mail($sendto, $subject, $message, $headers, $attachments);
 		$html = "<h2>A link was sent to: {$_POST['sendto']}</h2><pre>{$message}</pre>";
 		
 		/**
