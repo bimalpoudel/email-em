@@ -70,7 +70,7 @@ Thank you.
 		$attachments = null;
 
 		wp_mail($sendto, $subject, $message, $headers, $attachments);
-		$html = "<h2>A link was sent to: {$_POST['sendto']}</h2><pre>{$message}</pre>";
+		$html = "<h2>A link was sent to: {$sendto}</h2><pre>{$message}</pre>";
 		
 		/**
 		 * @todo Handle page reload; do not send the email again.
